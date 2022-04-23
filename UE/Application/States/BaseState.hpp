@@ -21,6 +21,8 @@ public:
     void handleAttachAccept() override;
     void handleAttachReject() override;
 
+    void handleSmsReceive(uint8_t action, std::string text);
+
 protected:
     Context& context;
     common::PrefixedLogger logger;
