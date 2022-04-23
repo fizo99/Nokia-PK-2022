@@ -20,8 +20,8 @@ public:
     void showConnecting() override;
     void showConnected() override;
 
-    void showSmsList() override;
     void showSms(int index) override;
+    void showSmsList() override;
 
     int getAction() override;
 
@@ -39,6 +39,8 @@ private:
     SmsDb smsDb;
     int action = -1;
     void onAcceptCallback(IUeGui::IListViewMode& menu);
+    void viewSms(int index);
+    void viewSmsList();
 };
 
 }

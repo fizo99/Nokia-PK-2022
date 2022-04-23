@@ -21,7 +21,7 @@ public:
     void handleAttachAccept() override;
     void handleAttachReject() override;
 
-    void handleSmsReceive(uint8_t action, std::string text);
+    void handleSmsReceive(uint8_t action, std::string text) override;
 
 protected:
     Context& context;

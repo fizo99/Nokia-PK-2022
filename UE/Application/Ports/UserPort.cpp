@@ -41,7 +41,19 @@ void UserPort::showConnected()
     gui.setAcceptCallback(std::bind(&UserPort::onAcceptCallback, this, std::ref(menu)));
 }
 
-void UserPort::showSmsList() {
+void UserPort::viewSms(int index) {
+    std::optional<Sms> sms = smsDb.retrieveSms(index);
+    IUeGui::ITextMode&  text = gui.setViewTextMode();
+    if(sms.has_value()){
+        text.setText(sms.value().getText());
+    }
+}
+
+void UserPort::showSms(int index) {
+    viewSms(index);
+}
+
+void UserPort::viewSmsList() {
     IUeGui::IListViewMode& menu = gui.setListViewMode();
     menu.clearSelectionList();
     for(auto sms : smsDb.getSmsList()){
@@ -50,12 +62,8 @@ void UserPort::showSmsList() {
     gui.setAcceptCallback(std::bind(&UserPort::onAcceptCallback, this, std::ref(menu)));
 }
 
-void UserPort::showSms(int index) {
-    std::optional<Sms> sms = smsDb.retrieveSms(index);
-    IUeGui::ITextMode&  text = gui.setViewTextMode();
-    if(sms.has_value()){
-        text.setText(sms.value().getText());
-    }
+void UserPort::showSmsList() {
+    viewSmsList();
 }
 
 SmsDb &UserPort::getSmsDb() {

@@ -12,9 +12,6 @@ std::vector<Sms> ue::SmsDb::getSmsList() {
 }
 
 std::optional<Sms> ue::SmsDb::retrieveSms(int index) {
-    if(index < 0 || index >= smsList.size()){
-        return {};
-    }
     smsList[index].markAsRead();
     return smsList[index];
 }
