@@ -10,6 +10,8 @@ private:
 
 public:
     Sms();
+    Sms(const std::string &text, const common::PhoneNumber &from, const common::PhoneNumber &to, bool read);
+
     void markAsRead();
     bool isRead();
     std::string getText();
