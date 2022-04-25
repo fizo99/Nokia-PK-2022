@@ -11,7 +11,7 @@ std::vector<Sms> ue::SmsDb::getSmsList() {
     return smsList;
 }
 
-std::optional<Sms> ue::SmsDb::retrieveSms(int index) {
-    smsList[index].markAsRead();
-    return smsList[index];
+Sms ue::SmsDb::retrieveSms(int index) {
+    smsList.at(index).markAsRead();
+    return smsList.at(index);
 }

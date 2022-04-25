@@ -14,7 +14,7 @@ namespace ue {
         SmsDb();
         void addSms(std::string);
         std::vector<Sms> getSmsList();
-        std::optional<Sms> retrieveSms(int index);
+        Sms retrieveSms(int index);
     };
 
 }
