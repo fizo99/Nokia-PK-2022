@@ -8,8 +8,8 @@ namespace ue
 ConnectedState::ConnectedState(Context &context)
     : BaseState(context, "ConnectedState")
 {
-    context.user.acceptCallback(std::bind(&ConnectedState::showSmsButton, this));
-    context.user.rejectCallback(std::bind(&ConnectedState::closeSmsButton, this));
+    context.user.acceptCallback([this] { showSmsButton(); });
+    context.user.rejectCallback([this] { closeSmsButton(); });
     context.user.showConnected();
 }
 

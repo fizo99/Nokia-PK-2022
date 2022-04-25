@@ -38,7 +38,7 @@ void UserPort::showConnected()
     menu.clearSelectionList();
     menu.addSelectionListItem("Compose SMS", "");
     menu.addSelectionListItem("View SMS", "");
-    gui.setAcceptCallback(std::bind(&UserPort::onAcceptCallback, this, std::ref(menu)));
+    gui.setAcceptCallback([this, &menu] { onAcceptCallback(menu); });
 }
 
 void UserPort::viewSms(int index) {
@@ -59,7 +59,7 @@ void UserPort::viewSmsList() {
     for(auto sms : smsDb.getSmsList()){
         menu.addSelectionListItem(sms.getText(), "");
     }
-    gui.setAcceptCallback(std::bind(&UserPort::onAcceptCallback, this, std::ref(menu)));
+    gui.setAcceptCallback([this, &menu] { onAcceptCallback(menu); });
 }
 
 void UserPort::showSmsList() {
