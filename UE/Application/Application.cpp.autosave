@@ -51,4 +51,9 @@ namespace ue
     {
         context.state->handleSmsReceive(action, text, fromPhoneNumber, toPhoneNumber);
     }
+    
+    void Application::handleFialedSmsReceive()
+    {
+        context.state;
+    }
 }

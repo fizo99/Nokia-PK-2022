@@ -12,9 +12,10 @@ namespace ue {
         std::vector<Sms> smsList;
     public:
         SmsDb();
-        void addSms(std::string);
+        void addSms(std::string, common::PhoneNumber, common::PhoneNumber, bool = false); // tu chyba tez chrono trzeba dodac?
         std::vector<Sms> getSmsList();
         std::optional<Sms> retrieveSms(int index);
+        void markSmsAsFailed();
     };
 
 }

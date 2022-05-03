@@ -6,10 +6,15 @@ Sms::Sms() {
 }
 
 Sms::Sms(const std::string &text, const common::PhoneNumber &from, const common::PhoneNumber &to, bool read,
-         const std::chrono::time_point<std::chrono::system_clock> &receive) : text(text), from(from), to(to),
-                                                                              read(read), receive(receive) {}
+         const std::chrono::time_point<std::chrono::system_clock> &receive, bool isFailedVar) : text(text), from(from), to(to),
+                                                                              read(read), receive(receive), isFailedVar(isFailedVar) {}
 void Sms::markAsRead() {
     read = true;
+}
+
+void Sms::isFialed()
+{
+    isFailedVar = true;
 }
 
 bool Sms::isRead() {

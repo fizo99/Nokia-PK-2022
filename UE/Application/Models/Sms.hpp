@@ -8,15 +8,19 @@ private:
     common::PhoneNumber from;
     common::PhoneNumber to;
     bool read = false;
+    bool isFailedVar = false;
     std::chrono::time_point <std::chrono::system_clock> receive;
 
 public:
     Sms();
 
     Sms(const std::string &text, const common::PhoneNumber &from, const common::PhoneNumber &to, bool read,
-        const std::chrono::time_point<std::chrono::system_clock> &receive);
+        const std::chrono::time_point<std::chrono::system_clock> &receive, bool isFailedVar);
+
+//    Sms(const std::string, common::PhoneNumber, common::PhoneNumber, bool=false, bool = false);
 
     void markAsRead();
+    void isFialed();
     bool isRead();
     std::string getText();
 
