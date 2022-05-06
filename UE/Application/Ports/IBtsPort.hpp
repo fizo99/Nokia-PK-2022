@@ -24,5 +24,4 @@ public:
 
     virtual void sendAttachRequest(common::BtsId) = 0;
 };
-
 }
