@@ -15,6 +15,8 @@ public:
     virtual void handleAttachReject() = 0;
 
     virtual void handleSmsReceive(uint8_t, std::string) = 0; // TODO: poprawic
+    virtual void handleDisconnected() = 0;
+
 };
 
 class IBtsPort
@@ -24,4 +26,5 @@ public:
 
     virtual void sendAttachRequest(common::BtsId) = 0;
 };
+
 }

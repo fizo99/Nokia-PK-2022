@@ -20,6 +20,7 @@ public:
     void handleSib(common::BtsId btsId) override;
     void handleAttachAccept() override;
     void handleAttachReject() override;
+    void handleDisconnected() override;
 
     void handleSmsReceive(uint8_t action, std::string text) override;
 

@@ -29,6 +29,7 @@ public:
     void handleAttachAccept() override;
     void handleAttachReject() override;
     void handleSmsReceive(uint8_t action, std::string text) override;
+    void handleDisconnected() override;
 
 private:
     Context context;

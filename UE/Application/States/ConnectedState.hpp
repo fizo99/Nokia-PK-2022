@@ -13,6 +13,7 @@ public:
     virtual void showSmsButton();
     virtual void closeSmsButton();
     void handleSmsReceive(uint8_t action, std::string text) override;
+    void handleDisconnected() override;
 };
 
 }
