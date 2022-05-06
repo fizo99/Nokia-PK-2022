@@ -5,15 +5,23 @@ Sms::Sms() {
     text = "text"; // TODO: tymczasowy do testow
 }
 
-Sms::Sms(const std::string &text, const common::PhoneNumber &from, const common::PhoneNumber &to, bool read,
-         const std::chrono::time_point<std::chrono::system_clock> &receive) : text(text), from(from), to(to),
-                                                                              read(read), receive(receive) {}
+Sms::Sms(const std::string &text, const common::PhoneNumber &from, const common::PhoneNumber &to, bool read, bool received,
+         const std::chrono::time_point<std::chrono::system_clock> &receiveTime) : text(text), from(from), to(to),
+                                                                              read(read), received(received), receiveTime(receiveTime) {}
 void Sms::markAsRead() {
     read = true;
 }
 
+void markAsNotReceived() {
+    received = false;
+}
+
 bool Sms::isRead() const {
     return read;
+}
+
+bool Sms::isReceived() const {
+    return received;
 }
 
 std::string Sms::getText() {
@@ -28,6 +36,6 @@ const common::PhoneNumber &Sms::getTo() const {
     return to;
 }
 
-const std::chrono::time_point<std::chrono::system_clock> &Sms::getReceive() const {
-    return receive;
+const std::chrono::time_point<std::chrono::system_clock> &Sms::getReceiveTime() const {
+    return receiveTime;
 }

@@ -28,8 +28,10 @@ public:
     void handleSib(common::BtsId btsId) override;
     void handleAttachAccept() override;
     void handleAttachReject() override;
-    void handleSmsReceive(uint8_t action, std::string text) override;
+    void handleSmsReceive(uint8_t action, std::string text,
+                          common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) override;
     void handleDisconnected() override;
+    void markLastSmsSentAsFailed() override;
 
 private:
     Context context;

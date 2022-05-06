@@ -56,7 +56,7 @@ void BtsPort::handleMessage(BinaryMessage msg)
             auto action = reader.readNumber<std::uint8_t>();
             if(action == 0) {
                 std::string text = reader.readRemainingText();
-                handler->handleSmsReceive(action, text);
+                handler->handleSmsReceive(action, text, fromPhoneNumber, toPhoneNumber);
             }
             else {
                 // TODO
@@ -83,8 +83,6 @@ void BtsPort::sendAttachRequest(common::BtsId btsId)
                                 common::PhoneNumber{}};
     msg.writeBtsId(btsId);
     transport.sendMessage(msg.getMessage());
-
-
 }
 
 }

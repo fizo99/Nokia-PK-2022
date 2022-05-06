@@ -24,7 +24,7 @@ void ConnectedState::closeSmsButton() {
     // TODO
 }
 
-void ConnectedState::handleSmsReceive(uint8_t action, std::string text) {
+void ConnectedState::handleSmsReceive(uint8_t action, std::string text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
     SmsDb &db = context.user.getSmsDb();
     db.addSms(text);
 }
