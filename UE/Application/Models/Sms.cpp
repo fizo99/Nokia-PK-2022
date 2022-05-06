@@ -12,7 +12,7 @@ void Sms::markAsRead() {
     read = true;
 }
 
-bool Sms::isRead() {
+bool Sms::isRead() const {
     return read;
 }
 

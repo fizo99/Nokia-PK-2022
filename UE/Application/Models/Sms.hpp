@@ -17,7 +17,7 @@ public:
         const std::chrono::time_point<std::chrono::system_clock> &receive);
 
     void markAsRead();
-    bool isRead();
+    bool isRead() const;
     std::string getText();
 
     const common::PhoneNumber &getFrom() const;
