@@ -56,13 +56,13 @@ void BtsPort::handleMessage(BinaryMessage msg)
             auto action = reader.readNumber<std::uint8_t>();
             if(action == 0) {
                 std::string text = reader.readRemainingText();
-                handler->handleSmsReceive(action, text, fromPhoneNumber, toPhoneNumber);
+                handler->handleSmsReceive(action, text, from, to);
             }
             else {
                 // TODO
             };
         }
-
+        // TODO: default option when phoneNumber not found
         default:
             logger.logError("unknow message: ", msgId, ", from: ", from);
 
@@ -72,6 +72,19 @@ void BtsPort::handleMessage(BinaryMessage msg)
     {
         logger.logError("handleMessage error: ", ex.what());
     }
+}
+void BtsPort::sendSms(common::PhoneNumber toPhoneNumber, std::string text) {
+
+    common::OutgoingMessage outgoingMessage = common::OutgoingMessage(common::MessageId::Sms, phoneNumber, toPhoneNumber);
+    outgoingMessage.writeNumber(static_cast<uint8_t>(0)); // TODO: przesylanie parametru ACTION w celu wyboru czy wysylanie sms czy wyjscie, czy cos innego
+    outgoingMessage.writeText(text);
+
+    transport.sendMessage(outgoingMessage.getMessage());
+}
+
+
+common::PhoneNumber BtsPort::getOwnPhoneNumber() {
+    return phoneNumber;
 }
 
 
@@ -84,5 +97,7 @@ void BtsPort::sendAttachRequest(common::BtsId btsId)
     msg.writeBtsId(btsId);
     transport.sendMessage(msg.getMessage());
 }
+
+
 
 }

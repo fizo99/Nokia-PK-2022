@@ -40,7 +40,7 @@ void BaseState::handleDisconnected()
     logger.logError("Uexpected: handleDisconnected");
 }
 
-void BaseState::handleSmsReceive(uint8_t action, std::string text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
+void BaseState::handleSmsReceive(uint8_t action, const std::string& text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
     logger.logError("Uexpected: handleSmsReceive");
 }
 

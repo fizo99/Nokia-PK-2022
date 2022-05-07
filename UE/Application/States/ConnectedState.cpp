@@ -1,6 +1,6 @@
 #include "ConnectedState.hpp"
-#include "ViewSmsListState.hpp"
 #include "SendingSmsState.hpp"
+#include "ViewSmsListState.hpp"
 #include "IUeGui.hpp"
 #include "NotConnectedState.hpp"
 
@@ -39,7 +39,7 @@ void ConnectedState::handleFailedSendingSms() {
     context.user.getSmsDb().markLastSmsSentAsFailed();
 }
 
-void ConnectedState::handleSmsReceive(uint8_t action, std::string text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
+void ConnectedState::handleSmsReceive(uint8_t action, const std::string& text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
     SmsDb &db = context.user.getSmsDb();
     db.addSms(text, fromPhoneNumber, toPhoneNumber);
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Messages/BtsId.hpp"
+#include "Messages/PhoneNumber.hpp"
 
 namespace ue
 {
@@ -14,7 +15,7 @@ public:
     virtual void handleAttachAccept() = 0;
     virtual void handleAttachReject() = 0;
 
-    virtual void handleSmsReceive(uint8_t, std::string, common::PhoneNumber, common::PhoneNumber) = 0;
+    virtual void handleSmsReceive(uint8_t, const std::string&, common::PhoneNumber, common::PhoneNumber) = 0;
     virtual void handleDisconnected() = 0;
     virtual void handleFailedSendingSms() = 0;
 

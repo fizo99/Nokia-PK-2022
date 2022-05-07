@@ -1,11 +1,9 @@
 #include "SmsDb.hpp"
 
-ue::SmsDb::SmsDb() {
-    smsList.push_back(Sms());
-}
+ue::SmsDb::SmsDb() {}
 
 void ue::SmsDb::addSms(const std::string& text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
-    Sms sms = Sms(text, fromPhoneNumber, toPhoneNumber, std::chrono::system_clock::now());
+    Sms sms = Sms(text, fromPhoneNumber, toPhoneNumber);
     smsList.push_back(sms);
 }
 std::vector<Sms> ue::SmsDb::getSmsList() {

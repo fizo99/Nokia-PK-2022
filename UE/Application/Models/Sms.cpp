@@ -12,7 +12,7 @@ void Sms::markAsRead() {
     read = true;
 }
 
-void markAsNotReceived() {
+void Sms::markAsNotReceived() {
     received = false;
 }
 
