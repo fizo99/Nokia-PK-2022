@@ -35,13 +35,18 @@ void BaseState::handleAttachReject()
     logger.logError("Uexpected: handleAttachReject");
 }
 
+void BaseState::handleDisconnected()
+{
+    logger.logError("Uexpected: handleDisconnected");
+}
+
 void BaseState::handleSmsReceive(uint8_t action, std::string text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
     logger.logError("Uexpected: handleSmsReceive");
 }
 
-void BaseState::handleDisconnected()
-{
-    logger.logError("Uexpected: handleDisconnected");
+
+void BaseState::markLastSmsSentAsFailed() {
+    logger.logError("Uexpected: markLastSmsSentAsFailed");
 }
 
 }

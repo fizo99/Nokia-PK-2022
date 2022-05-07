@@ -22,6 +22,7 @@ public:
 
     void showSms(int index) override;
     void showSmsList() override;
+    IUeGui::ISmsComposeMode& composeSms() override;
 
     int getAction() override;
 

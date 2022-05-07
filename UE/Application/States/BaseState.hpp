@@ -23,6 +23,7 @@ public:
     void handleDisconnected() override;
 
     void handleSmsReceive(uint8_t action, std::string text) override;
+    void markLastSmsSentAsFailed() override;
 
 protected:
     Context& context;
