@@ -16,7 +16,7 @@ public:
 
     virtual void handleSmsReceive(uint8_t, std::string, common::PhoneNumber, common::PhoneNumber) = 0;
     virtual void handleDisconnected() = 0;
-    virtual void markLastSmsSentAsFailed() = 0;
+    virtual void handleFailedSendingSms() = 0;
 
 };
 

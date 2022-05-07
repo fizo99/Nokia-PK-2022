@@ -45,8 +45,8 @@ void BaseState::handleSmsReceive(uint8_t action, std::string text, common::Phone
 }
 
 
-void BaseState::markLastSmsSentAsFailed() {
-    logger.logError("Uexpected: markLastSmsSentAsFailed");
+void BaseState::handleFailedSendingSms() {
+    logger.logError("Uexpected: handleFailedSendingSms");
 }
 
 }

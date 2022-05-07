@@ -17,7 +17,7 @@ public:
     MOCK_METHOD(void, handleAttachAccept, (), (final));
     MOCK_METHOD(void, handleAttachReject, (), (final));
     MOCK_METHOD(void, handleSmsReceive, (uint8_t, std::string, common::PhoneNumber, common::PhoneNumber), (final));
-    MOCK_METHOD(void, markLastSmsSentAsFailed, (), (final));
+    MOCK_METHOD(void, handleFailedSendingSms, (), (final));
 };
 
 class IBtsPortMock : public IBtsPort

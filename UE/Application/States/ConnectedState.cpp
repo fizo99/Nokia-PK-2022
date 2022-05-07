@@ -1,5 +1,6 @@
 #include "ConnectedState.hpp"
 #include "ViewSmsListState.hpp"
+#include "SendingSmsState.hpp"
 #include "IUeGui.hpp"
 #include "NotConnectedState.hpp"
 
@@ -14,9 +15,19 @@ ConnectedState::ConnectedState(Context &context)
     context.user.showConnected();
 }
 
+void ConnectedState::handleDisconnected()
+    {
+        context.setState<NotConnectedState>();
+    }
+
 void ConnectedState::showSmsButton() {
-    if(context.user.getAction() == 1) {
-        context.setState<ViewSmsListState>();
+    switch(context.user.getAction()){
+        case 0:
+            context.setState<SendingSmsState>();
+            break;
+        case 1:
+            context.setState<ViewSmsListState>();
+            break;
     }
 }
 
@@ -24,14 +35,13 @@ void ConnectedState::closeSmsButton() {
     // TODO
 }
 
-void ConnectedState::handleSmsReceive(uint8_t action, std::string text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
-    SmsDb &db = context.user.getSmsDb();
-    db.addSms(text);
+void ConnectedState::handleFailedSendingSms() {
+    context.user.getSmsDb().markLastSmsSentAsFailed();
 }
 
-void ConnectedState::handleDisconnected()
-{
-    context.setState<NotConnectedState>();
+void ConnectedState::handleSmsReceive(uint8_t action, std::string text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
+    SmsDb &db = context.user.getSmsDb();
+    db.addSms(text, fromPhoneNumber, toPhoneNumber);
 }
 
 }

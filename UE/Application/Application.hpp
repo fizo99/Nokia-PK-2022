@@ -31,7 +31,7 @@ public:
     void handleSmsReceive(uint8_t action, std::string text,
                           common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) override;
     void handleDisconnected() override;
-    void markLastSmsSentAsFailed() override;
+    void handleFailedSendingSms() override;
 
 private:
     Context context;

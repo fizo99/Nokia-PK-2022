@@ -50,9 +50,9 @@ void Application::handleDisconnected()
     context.state->handleDisconnected();
 }
 
-void Application::markLastSmsSentAsFailed()
+void Application::handleFailedSendingSms()
 {
-    context.state->markLastSmsSentAsFailed();
+    context.state->handleFailedSendingSms();
 }
 
 }
