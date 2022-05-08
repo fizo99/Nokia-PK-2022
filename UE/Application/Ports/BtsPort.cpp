@@ -57,14 +57,16 @@ void BtsPort::handleMessage(BinaryMessage msg)
             if(action == 0) {
                 std::string text = reader.readRemainingText();
                 handler->handleSmsReceive(action, text, from, to);
-            }
-            else {
-                // TODO
+            } else {
+                // TODO: handle unknown action
             };
+            break;
         }
-        // TODO: default option when phoneNumber not found
         default:
-            logger.logError("unknow message: ", msgId, ", from: ", from);
+        {
+            // TODO: handle default option when phoneNumber not found
+            logger.logError("message handler for ", msgId, "not implemented(from ", from,")");
+        }
 
         }
     }

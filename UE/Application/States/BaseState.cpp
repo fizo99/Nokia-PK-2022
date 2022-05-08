@@ -17,36 +17,36 @@ BaseState::~BaseState()
 
 void BaseState::handleTimeout()
 {
-    logger.logError("Uexpected: handleTimeout");
+    logger.logError("Unexpected: handleTimeout");
 }
 
 void BaseState::handleSib(common::BtsId btsId)
 {
-    logger.logError("Uexpected: handleSib: ", btsId);
+    logger.logError("Unexpected: handleSib: ", btsId);
 }
 
 void BaseState::handleAttachAccept()
 {
-    logger.logError("Uexpected: handleTimeout");
+    logger.logError("Unexpected: handleTimeout");
 }
 
 void BaseState::handleAttachReject()
 {
-    logger.logError("Uexpected: handleAttachReject");
+    logger.logError("Unexpected: handleAttachReject");
 }
 
 void BaseState::handleDisconnected()
 {
-    logger.logError("Uexpected: handleDisconnected");
+    logger.logError("Unexpected: handleDisconnected");
 }
 
 void BaseState::handleSmsReceive(uint8_t action, const std::string& text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
-    logger.logError("Uexpected: handleSmsReceive");
+    logger.logError("Unexpected: handleSmsReceive");
 }
 
 
 void BaseState::handleFailedSendingSms() {
-    logger.logError("Uexpected: handleFailedSendingSms");
+    logger.logError("Unexpected: handleFailedSendingSms");
 }
 
 }

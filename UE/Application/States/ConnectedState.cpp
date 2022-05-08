@@ -16,9 +16,9 @@ ConnectedState::ConnectedState(Context &context)
 }
 
 void ConnectedState::handleDisconnected()
-    {
-        context.setState<NotConnectedState>();
-    }
+{
+    context.setState<NotConnectedState>();
+}
 
 void ConnectedState::showSmsButton() {
     switch(context.user.getAction()){
@@ -32,7 +32,7 @@ void ConnectedState::showSmsButton() {
 }
 
 void ConnectedState::closeSmsButton() {
-    // TODO
+    // TODO handle for clicking close sms button
 }
 
 void ConnectedState::handleFailedSendingSms() {

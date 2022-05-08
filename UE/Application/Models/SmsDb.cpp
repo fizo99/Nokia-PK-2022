@@ -19,8 +19,7 @@ std::optional<Sms> ue::SmsDb::retrieveSms(int index) {
 }
 
 void ue::SmsDb::markLastSmsSentAsFailed() {
-    if(!smsList.empty())
-    {
+    if(!smsList.empty()) {
         smsList.back().markAsNotReceived();
     }
 }
