@@ -74,7 +74,7 @@ TEST_F(ApplicationConnectingTestSuite, shallFailAttachOnTimeout) {
     objectUnderTest.handleTimeout();
 }
 
-struct ApplicationConnectedTestSuite : ApplicationNotConnectedTestSuite
+struct ApplicationConnectedTestSuite : ApplicationConnectingTestSuite
 {
     ApplicationConnectedTestSuite();
 };
@@ -85,24 +85,22 @@ ApplicationConnectedTestSuite::ApplicationConnectedTestSuite() {
     objectUnderTest.handleAttachAccept();
 }
 
-TEST_F(ApplicationConnectedTestSuite, shallHandleDisconnect) {
-    EXPECT_CALL(userPortMock, showNotConnected());
-    objectUnderTest.handleDisconnected();
-}
-
 TEST_F(ApplicationConnectedTestSuite, shallReturnPhoneNumber) {
-    EXPECT_CALL(timerPortMock, stopTimer());
-    EXPECT_CALL(userPortMock, showConnected());
     common::PhoneNumber number {000};
     EXPECT_EQ(btsPortMock.getOwnPhoneNumber(), number);
 }
 
-TEST_F(ApplicationConnectedTestSuite, shallShowSms) {
-    // TODO: sms test
-}
+//TEST_F(ApplicationConnectedTestSuite, shallShowSms) {
+//    // TODO: sms test
+//}
+//
+//TEST_F(ApplicationConnectedTestSuite, shallShowSmsList) {
+//    // TODO: sms list test
+//}
 
-TEST_F(ApplicationConnectedTestSuite, shallShowSmsList) {
-    // TODO: sms list test
+TEST_F(ApplicationConnectedTestSuite, shallHandleDisconnect) {
+    EXPECT_CALL(userPortMock, showNotConnected());
+    objectUnderTest.handleDisconnected();
 }
 
 }
