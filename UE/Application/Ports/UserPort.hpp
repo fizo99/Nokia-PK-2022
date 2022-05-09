@@ -5,6 +5,7 @@
 #include "IUeGui.hpp"
 #include "Messages/PhoneNumber.hpp"
 #include "Models/SmsDb.hpp"
+#include "Models/Sms.hpp"
 
 namespace ue
 {
@@ -40,8 +41,8 @@ private:
     SmsDb smsDb;
     int action = -1;
     void onAcceptCallback(IUeGui::IListViewMode& menu);
-    void viewSms(int index);
-    void viewSmsList();
+    std::optional<Sms> viewSms(int index);
+    std::vector<Sms> viewSmsList();
 };
 
 }

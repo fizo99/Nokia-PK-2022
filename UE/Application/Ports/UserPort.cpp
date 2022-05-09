@@ -2,6 +2,7 @@
 #include "UeGui/IListViewMode.hpp"
 #include "UeGui/ITextMode.hpp"
 #include "UeGui/ISmsComposeMode.hpp"
+#include "Models/Sms.hpp"
 
 namespace ue
 {
@@ -42,29 +43,29 @@ void UserPort::showConnected()
     gui.setAcceptCallback([this, &menu] { onAcceptCallback(menu); });
 }
 
-void UserPort::viewSms(int index) {
-    std::optional<Sms> sms = smsDb.retrieveSms(index);
+std::optional<Sms> UserPort::viewSms(int index) {
+    return smsDb.retrieveSms(index);
+}
+
+void UserPort::showSms(int index) {
     IUeGui::ITextMode&  text = gui.setViewTextMode();
+    std::optional<Sms> sms = viewSms(index);
     if(sms.has_value()){
         text.setText(sms.value().getText());
     }
 }
 
-void UserPort::showSms(int index) {
-    viewSms(index);
-}
-
-void UserPort::viewSmsList() {
-    IUeGui::IListViewMode& menu = gui.setListViewMode();
-    menu.clearSelectionList();
-    for(auto sms : smsDb.getSmsList()){
-        menu.addSelectionListItem(sms.getText(), "");
-    }
-    gui.setAcceptCallback([this, &menu] { onAcceptCallback(menu); });
+std::vector<Sms> UserPort::viewSmsList() {
+    return smsDb.getSmsList();
 }
 
 void UserPort::showSmsList() {
-    viewSmsList();
+    IUeGui::IListViewMode& menu = gui.setListViewMode();
+    menu.clearSelectionList();
+    for(auto sms : viewSmsList()){
+        menu.addSelectionListItem(sms.getText(), "");
+    }
+    gui.setAcceptCallback([this, &menu] { onAcceptCallback(menu); });
 }
 
 SmsDb &UserPort::getSmsDb() {
