@@ -50,9 +50,4 @@ void Application::handleDisconnected()
     context.state->handleDisconnected();
 }
 
-void Application::handleFailedSendingSms()
-{
-    context.state->handleFailedSendingSms();
-}
-
 }

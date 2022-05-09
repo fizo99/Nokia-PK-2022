@@ -12,7 +12,6 @@ public:
 
     virtual void showSmsButton();
     virtual void closeSmsButton();
-    void handleFailedSendingSms() override;
     void handleDisconnected() override;
     void handleSmsReceive(uint8_t action, const std::string& text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) override;
 };

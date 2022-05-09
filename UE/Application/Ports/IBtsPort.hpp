@@ -17,8 +17,6 @@ public:
 
     virtual void handleSmsReceive(uint8_t, const std::string&, common::PhoneNumber, common::PhoneNumber) = 0;
     virtual void handleDisconnected() = 0;
-    virtual void handleFailedSendingSms() = 0;
-
 };
 
 class IBtsPort
