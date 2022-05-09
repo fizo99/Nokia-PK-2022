@@ -4,6 +4,13 @@
 #include "IUeGui.hpp"
 #include "NotConnectedState.hpp"
 
+namespace {
+    enum {
+        SENDING_SMS = 0,
+        VIEW_SMS_LIST = 1
+    };
+}
+
 namespace ue
 {
 
@@ -22,10 +29,10 @@ void ConnectedState::handleDisconnected()
 
 void ConnectedState::showSmsButton() {
     switch(context.user.getAction()){
-        case 0:
+        case SENDING_SMS:
             context.setState<SendingSmsState>();
             break;
-        case 1:
+        case VIEW_SMS_LIST:
             context.setState<ViewSmsListState>();
             break;
     }

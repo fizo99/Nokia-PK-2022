@@ -7,6 +7,10 @@
 #include "Models/SmsDb.hpp"
 #include "Models/Sms.hpp"
 
+namespace {
+    int NO_ACTION = -1;
+}
+
 namespace ue
 {
 
@@ -39,7 +43,7 @@ private:
     common::PhoneNumber phoneNumber;
     IUserEventsHandler* handler = nullptr;
     SmsDb smsDb;
-    int action = -1;
+    int action = NO_ACTION;
     void onAcceptCallback(IUeGui::IListViewMode& menu);
     std::optional<Sms> viewSms(int index);
     std::vector<Sms> viewSmsList();
