@@ -19,9 +19,9 @@ protected:
     const common::PhoneNumber PHONE_NUMBER{112};
     const common::BtsId BTS_ID{42};
     NiceMock<common::ILoggerMock> loggerMock;
-    StrictMock<IBtsPortMock> btsPortMock;
-    StrictMock<IUserPortMock> userPortMock;
-    StrictMock<ITimerPortMock> timerPortMock;
+    NiceMock<IBtsPortMock> btsPortMock;
+    NiceMock<IUserPortMock> userPortMock;
+    NiceMock<ITimerPortMock> timerPortMock;
 
     Application objectUnderTest{PHONE_NUMBER,
                                 loggerMock,
@@ -89,4 +89,20 @@ TEST_F(ApplicationConnectedTestSuite, shallHandleDisconnect) {
     EXPECT_CALL(userPortMock, showNotConnected());
     objectUnderTest.handleDisconnected();
 }
+
+TEST_F(ApplicationConnectedTestSuite, shallReturnPhoneNumber) {
+    EXPECT_CALL(timerPortMock, stopTimer());
+    EXPECT_CALL(userPortMock, showConnected());
+    common::PhoneNumber number {000};
+    EXPECT_EQ(btsPortMock.getOwnPhoneNumber(), number);
+}
+
+TEST_F(ApplicationConnectedTestSuite, shallShowSms) {
+    // TODO: sms test
+}
+
+TEST_F(ApplicationConnectedTestSuite, shallShowSmsList) {
+    // TODO: sms list test
+}
+
 }
