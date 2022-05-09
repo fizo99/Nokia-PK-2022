@@ -1,6 +1,7 @@
 #include "UserPort.hpp"
 #include "UeGui/IListViewMode.hpp"
 #include "UeGui/ITextMode.hpp"
+#include "UeGui/ISmsComposeMode.hpp"
 
 namespace ue
 {
@@ -95,7 +96,9 @@ void UserPort::onAcceptCallback(IUeGui::IListViewMode &menu) {
 }
 
 IUeGui::ISmsComposeMode& UserPort::composeSms() {
-    return gui.setSmsComposeMode();
+    IUeGui::ISmsComposeMode &mode = gui.setSmsComposeMode();
+    mode.clearSmsText();
+    return mode;
 }
 
 }

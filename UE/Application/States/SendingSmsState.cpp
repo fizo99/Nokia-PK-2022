@@ -3,7 +3,6 @@
 namespace ue {
     SendingSmsState::SendingSmsState(Context &context) : ConnectedState(
             context), iSmsComposeMode(context.user.composeSms()) {
-        iSmsComposeMode.clearSmsText();
     }
 
     void SendingSmsState::showSmsButton() {

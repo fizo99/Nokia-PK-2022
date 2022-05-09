@@ -78,7 +78,7 @@ void BtsPort::handleMessage(BinaryMessage msg)
 void BtsPort::sendSms(common::PhoneNumber toPhoneNumber, std::string text) {
 
     common::OutgoingMessage outgoingMessage = common::OutgoingMessage(common::MessageId::Sms, phoneNumber, toPhoneNumber);
-    outgoingMessage.writeNumber(static_cast<uint8_t>(0)); // TODO: przesylanie parametru ACTION w celu wyboru czy wysylanie sms czy wyjscie, czy cos innego
+    outgoingMessage.writeNumber(static_cast<uint8_t>(0));
     outgoingMessage.writeText(text);
 
     transport.sendMessage(outgoingMessage.getMessage());
