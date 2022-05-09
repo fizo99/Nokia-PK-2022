@@ -1,12 +1,11 @@
 #include <chrono>
+#include <utility>
 #include "Sms.hpp"
 
-Sms::Sms() {
-    text = "text"; // TODO: tymczasowy do testow
-}
+Sms::Sms() {}
 
-Sms::Sms(const std::string &text, const common::PhoneNumber &from, const common::PhoneNumber &to, bool read, bool received,
-         const std::chrono::time_point<std::chrono::system_clock> &receiveTime) : text(text), from(from), to(to),
+Sms::Sms(std::string text, const common::PhoneNumber &from, const common::PhoneNumber &to, bool read, bool received,
+         const std::chrono::time_point<std::chrono::system_clock> &receiveTime) : text(std::move(text)), from(from), to(to),
                                                                               read(read), received(received), receiveTime(receiveTime) {}
 void Sms::markAsRead() {
     read = true;
