@@ -70,7 +70,7 @@ std::vector<Sms> UserPort::viewSmsList() {
 void UserPort::showSmsList() {
     IUeGui::IListViewMode& menu = gui.setListViewMode();
     menu.clearSelectionList();
-<<<<<<< HEAD
+
     for(auto&& sms : smsDb.getSmsList()){
         std::string info = "FROM:" + common::to_string(sms.getFrom()) + ";TO:" + common::to_string(sms.getTo());
         if(!sms.isReceived())
@@ -81,10 +81,6 @@ void UserPort::showSmsList() {
         {
             menu.addSelectionListItem(info,  "");
         }
-=======
-    for(auto &&sms : viewSmsList()){
-        menu.addSelectionListItem(sms.getText(), "");
->>>>>>> 30f2ffbfce3950580d69797c918cfd5566ce7848
     }
     gui.setAcceptCallback([this, &menu] { onAcceptCallback(menu); });
 }
