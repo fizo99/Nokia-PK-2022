@@ -44,4 +44,9 @@ void BaseState::handleSmsReceive(uint8_t action, const std::string& text, common
     logger.logError("Unexpected: handleSmsReceive");
 }
 
+void BaseState::handleFailedSmsSend()
+{
+    logger.logError("Unexpected: handleFailedSmsSend");
+}
+
 }

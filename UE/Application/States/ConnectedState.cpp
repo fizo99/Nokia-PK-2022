@@ -47,4 +47,10 @@ void ConnectedState::handleSmsReceive(uint8_t action, const std::string& text, c
     db.addSms(text, fromPhoneNumber, toPhoneNumber);
 }
 
+void ConnectedState::handleFailedSmsSend()
+{
+    SmsDb &db = context.user.getSmsDb();
+    db.markLastSmsSentAsFailed();
+}
+
 }
