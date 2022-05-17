@@ -1,9 +1,9 @@
 #include "SmsDb.hpp"
 
 ue::SmsDb::SmsDb() {
-    common::PhoneNumber number {000};
-    Sms sms {"SMS_TEST", number, number};
-    smsList.push_back(sms);
+//    common::PhoneNumber number {000};
+//    Sms sms {"SMS_TEST", number, number};
+//    smsList.push_back(sms);
 }
 
 void ue::SmsDb::addSms(const std::string& text, common::PhoneNumber fromPhoneNumber, common::PhoneNumber toPhoneNumber) {
@@ -26,4 +26,16 @@ void ue::SmsDb::markLastSmsSentAsFailed() {
     if(!smsList.empty()) {
         smsList.back().markAsNotReceived();
     }
+}
+
+bool ue::SmsDb::checkForNewSms()
+{
+    for(auto&& sms : smsList)
+    {
+        if(!sms.isRead())
+        {
+            return true;
+        }
+    }
+    return false;
 }

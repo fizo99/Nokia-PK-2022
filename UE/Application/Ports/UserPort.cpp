@@ -38,7 +38,15 @@ void UserPort::showConnected()
     IUeGui::IListViewMode& menu = gui.setListViewMode();
     menu.clearSelectionList();
     menu.addSelectionListItem("Compose SMS", "");
-    menu.addSelectionListItem("View SMS", "");
+    if(smsDb.checkForNewSms())
+    {
+        menu.addSelectionListItem("[!]View SMS", "");
+        gui.showNewSms(false);
+    }
+    else
+    {
+        menu.addSelectionListItem("View SMS", "");
+    }
     gui.setAcceptCallback([this, &menu] { onAcceptCallback(menu); });
 }
 
@@ -57,8 +65,16 @@ void UserPort::showSms(int index) {
 void UserPort::viewSmsList() {
     IUeGui::IListViewMode& menu = gui.setListViewMode();
     menu.clearSelectionList();
-    for(auto sms : smsDb.getSmsList()){
-        menu.addSelectionListItem(sms.getText(), "");
+    for(auto&& sms : smsDb.getSmsList()){
+        std::string info = "FROM:" + common::to_string(sms.getFrom()) + ";TO:" + common::to_string(sms.getTo());
+        if(!sms.isReceived())
+        {
+            menu.addSelectionListItem("[FAILED]" + info, "");
+        }
+        else
+        {
+            menu.addSelectionListItem(info,  "");
+        }
     }
     gui.setAcceptCallback([this, &menu] { onAcceptCallback(menu); });
 }
