@@ -13,6 +13,6 @@ namespace ue {
     }
 
     void DialNumberState::refuseButton() {
-        context.setState<ConnectedState>()
+        context.setState<ConnectedState>();
     }
 }
