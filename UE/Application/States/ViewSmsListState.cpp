@@ -9,12 +9,12 @@ namespace ue {
         context.user.showSmsList();
     }
 
-    void ViewSmsListState::showSmsButton() {
+    void ViewSmsListState::acceptButton() {
         int action = context.user.getAction();
         context.setState<ViewSmsState>(action);
     }
 
-    void ViewSmsListState::closeSmsButton() {
+    void ViewSmsListState::refuseButton() {
         context.setState<ConnectedState>();
     }
 

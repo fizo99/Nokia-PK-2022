@@ -5,7 +5,7 @@ namespace ue {
             context), iSmsComposeMode(context.user.composeSms()) {
     }
 
-    void SendingSmsState::showSmsButton() {
+    void SendingSmsState::acceptButton() {
         std::string text = iSmsComposeMode.getSmsText();
         common::PhoneNumber toPhoneNumber = iSmsComposeMode.getPhoneNumber();
 
@@ -15,7 +15,7 @@ namespace ue {
         context.setState<ConnectedState>();
     }
 
-    void SendingSmsState::closeSmsButton() {
+    void SendingSmsState::refuseButton() {
         context.setState<ConnectedState>();
     }
 }

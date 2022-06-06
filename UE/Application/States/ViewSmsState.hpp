@@ -6,7 +6,7 @@ namespace  ue {
     class ViewSmsState : public ConnectedState {
     public:
         ViewSmsState(Context& context, int index);
-        void showSmsButton() override;
-        void closeSmsButton() override;
+        void acceptButton() override;
+        void refuseButton() override;
     };
 };

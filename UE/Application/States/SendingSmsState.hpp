@@ -10,7 +10,7 @@ namespace ue {
     public:
         SendingSmsState(Context& context);
 
-        void showSmsButton() override;
-        void closeSmsButton() override;
+        void acceptButton() override;
+        void refuseButton() override;
     };
 }

@@ -8,7 +8,7 @@ private:
     common::PhoneNumber from;
     common::PhoneNumber to;
     bool read = false;
-    bool received = true; // TODO: handling failed sms sending
+    bool received = true;
     std::chrono::time_point <std::chrono::system_clock> receiveTime;
 
 public:

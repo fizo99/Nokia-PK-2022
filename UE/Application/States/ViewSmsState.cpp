@@ -7,11 +7,11 @@ namespace ue {
         context.user.showSms(index);
     }
 
-    void ViewSmsState::showSmsButton() {
+    void ViewSmsState::acceptButton() {
 
     }
 
-    void ViewSmsState::closeSmsButton() {
+    void ViewSmsState::refuseButton() {
         context.setState<ViewSmsListState>();
     }
 }
